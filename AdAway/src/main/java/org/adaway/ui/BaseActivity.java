@@ -30,23 +30,22 @@ import org.adaway.util.Constants;
 import org.adaway.util.Log;
 import org.adaway.util.StatusCodes;
 import org.adaway.util.Utils;
-
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.commonsware.cwac.wakeful.WakefulIntentService;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 
-public class BaseActivity extends SherlockFragmentActivity {
+public class BaseActivity extends FragmentActivity {
 
     // Intent extras to give result of applying process to base activity
     public static final String EXTRA_APPLYING_RESULT = "org.adaway.APPLYING_RESULT";
@@ -241,7 +240,7 @@ public class BaseActivity extends SherlockFragmentActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        ActionBar actionBar = this.getSupportActionBar();
+        ActionBar actionBar = this.getActionBar();
         actionBar.setSubtitle(R.string.app_subtitle);
 
         // add WebserverFragment when enabled in preferences

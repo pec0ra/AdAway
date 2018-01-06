@@ -22,21 +22,20 @@ package org.adaway.ui;
 
 import org.adaway.R;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.MenuItem;
-
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.MenuItem;
 
-public class HostsSourcesActivity extends SherlockFragmentActivity {
+public class HostsSourcesActivity extends FragmentActivity {
     private ActionBar mActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mActionBar = getSupportActionBar();
+        mActionBar = getActionBar();
 
         setContentView(R.layout.hosts_sources_activity);
 

@@ -25,13 +25,7 @@ import org.adaway.helper.ImportExportHelper;
 import org.adaway.util.Constants;
 import org.adaway.util.Log;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.Tab;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -40,8 +34,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
-public class ListsActivity extends SherlockFragmentActivity {
+public class ListsActivity extends FragmentActivity {
     private FragmentActivity mActivity;
     private ActionBar mActionBar;
     private ActionBar.Tab mTab1;
@@ -50,7 +47,7 @@ public class ListsActivity extends SherlockFragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getSupportMenuInflater();
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.lists_activity, menu);
         return true;
     }
@@ -104,15 +101,15 @@ public class ListsActivity extends SherlockFragmentActivity {
 
         setContentView(R.layout.lists_activity);
 
-        mActionBar = getSupportActionBar();
+        mActionBar = getActionBar();
         mActionBar.setDisplayShowTitleEnabled(true);
         mActionBar.setDisplayHomeAsUpEnabled(true);
 
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        mTab1 = getSupportActionBar().newTab();
-        mTab2 = getSupportActionBar().newTab();
-        mTab3 = getSupportActionBar().newTab();
+        mTab1 = getActionBar().newTab();
+        mTab2 = getActionBar().newTab();
+        mTab3 = getActionBar().newTab();
 
         mTab1.setTabListener(new TabListener<BlacklistFragment>(this, "blacklist",
                 BlacklistFragment.class));
@@ -173,14 +170,14 @@ public class ListsActivity extends SherlockFragmentActivity {
         }
 
         @Override
-        public void onTabReselected(Tab tab, FragmentTransaction ft) {
+        public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
         }
 
         /**
          * Open Fragment based on selected Tab
          */
         @Override
-        public void onTabSelected(Tab tab, FragmentTransaction ignoredFt) {
+        public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ignoredFt) {
             // bug in compatibility lib:
             // http://stackoverflow.com/questions/8645549/null-fragmenttransaction-being-passed-to-tablistener-ontabselected
             FragmentManager fragMgr = ((FragmentActivity) mActivity).getSupportFragmentManager();
@@ -192,7 +189,7 @@ public class ListsActivity extends SherlockFragmentActivity {
         }
 
         @Override
-        public void onTabUnselected(Tab tab, FragmentTransaction ignoredFt) {
+        public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ignoredFt) {
             FragmentManager fragMgr = ((FragmentActivity) mActivity).getSupportFragmentManager();
             FragmentTransaction ft = fragMgr.beginTransaction();
 

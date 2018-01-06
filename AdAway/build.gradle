@@ -10,7 +10,6 @@ dependencies {
     compile 'com.commonsware.cwac:wakeful:1.0.+'
     compile project(':libraries:RootCommands')
     compile 'net.sf.trove4j:trove4j:3.0.3'
-    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
     compile 'com.android.support:support-v4:18.0.+'
     compile 'org.sufficientlysecure:html-textview:2.0'
     compile 'org.sufficientlysecure:donations:2.4'
@@ -24,12 +23,12 @@ android {
         }
     }
 
-    compileSdkVersion 25
-    buildToolsVersion "24.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 26
 
     }
 
@@ -64,12 +63,6 @@ android {
     // Do not abort build if lint finds errors
     lintOptions {
         abortOnError false
-    }
-
-    externalNativeBuild {
-        ndkBuild {
-            path 'jni/Android.mk'
-        }
     }
 }
 

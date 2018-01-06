@@ -20,17 +20,13 @@
 
 package org.adaway.ui;
 
-import org.adaway.BuildConfig;
 import org.adaway.R;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.widget.TextView;
-
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.Tab;
-import com.actionbarsherlock.view.MenuItem;
 
 import java.util.ArrayList;
 
@@ -38,13 +34,12 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-
-import com.actionbarsherlock.app.SherlockFragmentActivity;
+import android.view.MenuItem;
 
 import org.adaway.util.Constants;
 import org.sufficientlysecure.donations.DonationsFragment;
 
-public class HelpActivity extends SherlockFragmentActivity {
+public class HelpActivity extends FragmentActivity {
     ViewPager mViewPager;
     TabsAdapter mTabsAdapter;
 
@@ -91,7 +86,7 @@ public class HelpActivity extends SherlockFragmentActivity {
         mViewPager.setId(R.id.pager);
 
         setContentView(mViewPager);
-        ActionBar bar = getSupportActionBar();
+        ActionBar bar = getActionBar();
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         bar.setDisplayShowTitleEnabled(true);
         bar.setDisplayHomeAsUpEnabled(true);
@@ -156,10 +151,10 @@ public class HelpActivity extends SherlockFragmentActivity {
             }
         }
 
-        public TabsAdapter(SherlockFragmentActivity activity, ViewPager pager) {
+        public TabsAdapter(FragmentActivity activity, ViewPager pager) {
             super(activity.getSupportFragmentManager());
             mContext = activity;
-            mActionBar = activity.getSupportActionBar();
+            mActionBar = activity.getActionBar();
             mViewPager = pager;
             mViewPager.setAdapter(this);
             mViewPager.setOnPageChangeListener(this);
@@ -195,7 +190,7 @@ public class HelpActivity extends SherlockFragmentActivity {
         public void onPageScrollStateChanged(int state) {
         }
 
-        public void onTabSelected(Tab tab, FragmentTransaction ft) {
+        public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
             Object tag = tab.getTag();
             for (int i = 0; i < mTabs.size(); i++) {
                 if (mTabs.get(i) == tag) {
@@ -204,10 +199,10 @@ public class HelpActivity extends SherlockFragmentActivity {
             }
         }
 
-        public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+        public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
         }
 
-        public void onTabReselected(Tab tab, FragmentTransaction ft) {
+        public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
         }
     }
 }
