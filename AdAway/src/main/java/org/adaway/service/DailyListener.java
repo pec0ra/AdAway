@@ -22,6 +22,7 @@ package org.adaway.service;
 
 import java.util.Calendar;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.adaway.helper.PreferenceHelper;
 import org.adaway.util.Constants;
@@ -105,7 +106,8 @@ public class DailyListener implements AlarmListener {
         }
     }
 
-    public long getMaxAge() {
+    @Override
+    public long getMaxAge(Context context) {
         if (Constants.DEBUG_UPDATE_CHECK_SERVICE) {
             return (60 * 1000);
         } else {

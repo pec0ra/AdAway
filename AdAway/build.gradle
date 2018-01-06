@@ -7,10 +7,10 @@ repositories {
 }
 dependencies {
 
-    compile 'com.commonsware.cwac:wakeful:1.0.+'
+    compile 'com.commonsware.cwac:wakeful:1.1.0'
     compile project(':libraries:RootCommands')
     compile 'net.sf.trove4j:trove4j:3.0.3'
-    compile 'com.android.support:support-v4:18.0.+'
+    compile 'com.android.support:support-v4:26.1.0'
     compile 'org.sufficientlysecure:html-textview:2.0'
     compile 'org.sufficientlysecure:donations:2.4'
 }
@@ -27,8 +27,12 @@ android {
     buildToolsVersion "26.0.2"
 
     defaultConfig {
+        applicationId "org.adaway"
         minSdkVersion 16
         targetSdkVersion 26
+
+        versionCode 61
+        versionName "3.3"
 
     }
 
